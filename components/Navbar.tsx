@@ -1,8 +1,20 @@
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { toast } from 'react-hot-toast'
+import useAuth from '../hooks/useAuth'
 
 const Navbar = () => {
+  const { connectWallet, account, accountFound, switchAccount, error } =
+    useAuth()
+
+  useEffect(() => {
+    if (error) {
+      toast.error('Make Sure You Have A Wallet!')
+    }
+  }, [error])
+
   return (
-    <nav className='mt-16 text-lg'>
+    <nav className='mt-16'>
       <div className='max-w-6xl mx-auto'>
         <div className='flex justify-between items-center'>
           <div className='flex'>
@@ -39,9 +51,21 @@ const Navbar = () => {
               </a>
             </Link>
 
-            <button className='bg-red-400 text-white px-32 text-md duration-300 transition-all py-5 border-4 rounded-lg hover:bg-transparent hover:text-gray-700 border-red-400'>
-              Connect
-            </button>
+            {!account && accountFound ? (
+              <button
+                onClick={() => connectWallet()}
+                className='bg-red-400 text-white px-32 text-md duration-300 transition-all py-5 border-4 rounded-lg hover:bg-transparent hover:text-gray-700 border-red-400'
+              >
+                Connect
+              </button>
+            ) : (
+              <span
+                onClick={() => switchAccount()}
+                className='font-bold underline hover:text-red-400 cursor-pointer'
+              >
+                {account}
+              </span>
+            )}
           </div>
         </div>
       </div>

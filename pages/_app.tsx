@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { AppRouter } from './api/trpc/[trpc]'
 
 import '../styles/globals.css'
+import { Toaster } from 'react-hot-toast'
 
 const App: AppType = ({ Component, pageProps }) => {
   return (
@@ -17,6 +18,8 @@ const App: AppType = ({ Component, pageProps }) => {
           type='image/x-icon'
         />
       </Head>
+
+      <Toaster />
 
       <Component {...pageProps} />
     </div>
