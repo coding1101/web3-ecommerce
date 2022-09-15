@@ -10,8 +10,9 @@ const App: AppType = ({ Component, pageProps }) => {
     <div>
       <Head>
         <title>Web3 Ecommerce</title>
+
         <link
-          rel='Favicon'
+          rel='shortcut icon'
           href='/favicon.png'
           type='image/x-icon'
         />

@@ -1,10 +1,11 @@
 import { NextPage } from 'next'
+import Navbar from '../components/Navbar'
 
 const Home: NextPage = () => {
   return (
-    <div className='flex flex-col justify-center items-center w-screen h-screen'>
-      Hello World!
-    </div>
+    <>
+      <Navbar />
+    </>
   )
 }
 
